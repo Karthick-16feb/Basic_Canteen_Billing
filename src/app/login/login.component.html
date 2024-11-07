@@ -1,0 +1,180 @@
+<!--<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="input-group">
+        Email ID :<input type="email" ngModel #email="ngModel" email="email" /><br/>
+    </div>
+    <div class="input-group">
+        Password : <input type="password" ngModel #pwd="ngModel" name="pwd" /><br/>
+    </div>
+
+    <div class="input-group">
+        <input type="submit" name="submit" />
+    </div>
+
+    <div class="input-group">
+        <a href="/register">Already registered</a>
+        <a href="/forget">Forget Password</a>
+
+    </div>
+    
+</form>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+     <style>
+         .background {
+             font-family: Arial, sans-serif;
+             background-image: url('../assets/images/bg.png'); /* Replace 'background_image.jpg' with your image file */
+             background-size: cover;
+         }
+         h1 {
+                 display: block;
+                 margin-bottom: 8px; 
+                 text-align: center;
+
+         }
+         .l_menu {
+                 background-color: chocolate;
+                 overflow: hidden;
+             }
+             div.background
+             {	
+                 background-image: url(10.jpg);
+                 background-position: center;
+                 background-repeat: no-repeat;
+             }
+
+             .l_menu a {
+                 float: left;
+                 display: block;
+                 color: #f2f2f2;
+                 text-align: center;
+                 padding: 14px 16px;
+                 text-decoration: none;
+                 cursor: pointer;
+             }
+
+             .l_menu a:hover {
+                 background-color: #ddd;
+                 color: black;
+             }
+
+         .media{
+                 background-color: transparent;
+                 overflow: hidden;
+                 float: center;
+                 display: block;
+                 color: black;
+                 text-align: center;
+                 padding: 14px 16px;
+                 text-decoration: none;
+                 font-size: 60px;
+                 font-style: italic;
+                 font-family: 'Times New Roman';
+             }
+         .container {
+             max-width: 400px;
+             margin: 50px auto;
+             padding: 20px;
+             border: 1px solid #ccc;
+             color:black;
+             border-radius: 5px;
+             background-color:rgba(240, 237, 233, 0.151);
+             animation: slide-in 0.6s ease-out;
+         }
+         footer {
+                 background-color: #333;
+                 overflow: hidden;
+                 float: bottom;
+                 display: block;
+                 color: #f2f2f2;
+                 text-align: center;
+                 padding: 14px 16px;
+                 text-decoration: none;
+                 font-size:20px;
+             }
+         
+         @keyframes slide-in {
+             from{
+                 opacity: 0;
+                 transform: translateY(-20px);
+             }
+             to{
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+         }
+         
+         label {
+             display: block;
+             margin-bottom: 8px;
+         }
+         
+         input {
+             width: 100%;
+             padding: 8px;
+             margin-bottom: 16px;
+             box-sizing: border-box;
+         }
+
+         input[type="button"] {
+             background-color: #4caf50;
+             color: white;
+             cursor: pointer;
+         }       
+         input[type="submit"] {
+             background-color: #4caf50;
+             color: white;
+             cursor: pointer;
+         }
+     </style>
+    <script>
+     /*function validate() {
+         var user = document.f1.username.value.trim();
+         if (user.length == 0) {
+         alert("Username is Missing");
+         return false;
+     }
+     var pass = document.f1.password.value.trim();
+     if (pass.length == 0) {
+     alert("Password is Missing");
+     return false;
+     }
+     return true;
+    }  */
+ </script>
+</head>
+<body class="background">
+    <h2 style="text-align: center;" >{{msg}}</h2>
+    <h1  MyHighlight="" class="media">Bloody Sweet Cafe</h1>
+        <h2 MyHighlight  style="color:rgb(26, 0, 139);text-align: center;">{{mydate}}</h2>
+        <div class="container"> 
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                 <h1>Login Page</h1>
+                <label for="email">Email:</label>
+                <input type="email" ngModel #email="ngModel" name="email" required><br/>
+                <div *ngIf="email.invalid && email.touched">
+                    <span *ngIf="email.errors?.['required']">* Required</span>
+                    <span *ngIf="email.errors?.['email']">* Valid email required</span>
+                </div>
+                <label for="password">Password:</label>
+                <input type="password"  minlength="7" maxlength="10"  ngModel #pwd="ngModel" pattern="[0-9A-Za-z!@#$%^&*()_+=-]+" name="pwd" required>
+                <div *ngIf="pwd.invalid">
+                    <span *ngIf="pwd.errors?.['required']">*required</span>
+                    <span *ngIf="pwd.errors?.['minlength']">min length is 7</span>
+                    <span *ngIf="pwd.errors?.['maxlength']">max length is 10</span>
+                    <span *ngIf="pwd.errors?.['pattern']">*password should have alphanumerics and special characters</span>
+                </div>
+                <input type="submit" id="ulogin"value="Login"/>
+                <label align="center"><a href="/forget">Forget Password</a></label>
+                <label align="center">or <br> <a href="/register">Don't have any account? Sign Up</a></label>
+                <div *ngIf="msg" class="error">{{ msg }}</div>
+            </form>
+        </div>
+    </body>
+    </html>
+    

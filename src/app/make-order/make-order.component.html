@@ -1,0 +1,154 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bg.jpg');
+            background-size: cover;
+        }
+
+        h1 {
+            display: block;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto; /* Center the container */
+            padding: 20px;
+        }
+
+        .container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; /* Add margin to separate table from the top */
+            border: 2px solid black; /* Add black border */
+            text-align: center; /* Align table content in the center */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .container th,
+        .container td {
+            padding: 10px; /* Add padding to cells */
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Add border bottom to each row */
+            width: 5cm; /* Set column width to 5cm */
+        }
+
+        .container th {
+            background-color: burlywood; /* Background color for table headers */
+            font-size: 16px; /* Font size for headers, matching with table data */
+            font-weight: normal; /* Remove bold font weight */
+        }
+
+        .container td {
+            font-size: 16px; /* Font size for table data */
+        }
+
+        .add-btn,
+        .remove-btn {
+            padding: 6px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            background-color: #f44336;
+        }
+        .print-btn, .reset-btn {
+            padding: 6px 12px;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .reset-btn {
+            background-color: blueviolet;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+        .button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+        .print-btn {
+            background-color: rgb(12, 190, 12);
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        label {
+            font-weight: bold; /* Make labels bold */
+        }
+    </style>
+</head>
+<body>
+
+    <h1 align="center">Billing page</h1>
+    <h4 id="currentDateTime" align="center"></h4>
+    <div class="container">
+        <table border='3'>
+            <tr>
+                <th>Food Name</th>
+                <th>Amount</th>
+                <th>Add</th>
+                <th>Remove</th>
+            </tr>
+            <!-- Use *ngFor directive to iterate over foods array -->
+            <tr *ngFor="let food of foods">
+                <!-- Display food name and amount -->
+                <td>{{ food.food_name }}</td>
+                <td>{{ food.amount }}</td>
+                <!-- Call addToCart method when Add button is clicked -->
+                <td><button class="add-btn" (click)="addToCart(food)">Add</button></td>
+                <td><button class="remove-btn" (click)="removeFromCart(food, food.food_name)">Remove</button></td>
+
+            </tr>
+        </table>
+
+        <!-- New table for displaying items in the cart -->
+    <table id="cartTable" border='3'>
+        <tr>
+            <th>Food Name</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+    <!-- Use *ngFor directive to iterate over cartItems array -->
+        <tr *ngFor="let item of cartItems">
+            <td>{{ item.foodName }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.amount }}</td>
+        </tr>
+    </table>
+    
+    
+    <!-- Display the total amount in label format -->
+    <label id="total">Total Amount: {{ totalAmount | currency }}</label><br><br>
+    <div class="button-container">
+    <button class="print-btn" *ngIf="cartItems.length > 0 " (click)="printBill()" >Print</button><label></label>
+    <button class="reset-btn" *ngIf="cartItems.length > 0 " (click)="resetCart()">Reset</button>
+    </div>
+    <label align="center"><a href="/delete-food">Delete the Food </a></label>
+    <label align="center"><a href="/update-cost">Update the cost</a></label>
+    <label align="center"><a href="/add-food">Add the Food</a></label>
+</div>
+
+</body>
+
+    

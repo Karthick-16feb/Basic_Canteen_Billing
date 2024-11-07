@@ -1,0 +1,204 @@
+<!--<p>insert works!</p>-->
+<!--<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <h1 align="center">Register Page</h1>
+    <div class="input-group">
+        Username :<input type="text" ngModel #name="ngModel" name="name" /><br/>
+    </div>
+    <div class="input-group">
+        Phone number : <input type="text" ngModel #age="ngModel" name="phno" /><br/>
+    </div>
+    <div class="input-group">
+        Email : <input type="email" ngModel #email="ngModel" name="email" /><br/>
+    </div>
+    <div class="input-group">
+        Password : <input type="password" ngModel #pwd="ngModel" name="pwd" /><br/>
+    </div>
+    <div class="input-group">
+        Confirm Password : <input type="password" ngModel #c_pwd="ngModel" name="c_pwd" /><br/>
+    </div>
+    <div class="input-group">
+        Gender : <input type="radio" ngModel #gender="ngModel" name="gender" value="male" />Male<br>
+        <input type="radio" ngModel #gender="ngModel" name="gender" value="female" />Female<br>
+    </div>
+    <div class="input-group">
+        Address : <input type="text" ngModel #addr="ngModel" name="addr" /><br/>
+    </div>
+    <div class="input-group">
+        <input type="checkbox" ngModel #chb="ngModel" name="chb" />Accept terms and conditions<br/>
+    </div>
+    <div class="input-group">
+        <input type="submit" name="submit" />
+    </div>
+</form>
+<h2>{{msg}}</h2>-->
+
+
+<!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!DOCTYPE html>
+<html lang="en" class="background">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User registration</title>
+    <style>
+        /*body {
+            font-family: Arial, sans-serif;
+            background-image: url('C:/Users/Annamalai/Desktop/model2-app/src/assets/images/bg.jpg'); /* Replace 'background_image.jpg' with your image file */
+            
+        
+        /* styles.css */
+        .background {
+            /*background-image: url('../assets/images/bg1.png');*/
+            background-size:cover;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            display: block;
+            margin-bottom: 8px; 
+            text-align: center;
+        }
+
+        .media {
+            background-color: transparent;
+            overflow: hidden;
+            float: center;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 60px;
+            font-style: italic;
+            font-family: 'Times New Roman';
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            color: black;
+            border-radius: 5px;
+            background-color: rgba(240, 237, 233, 0.151);
+            animation: slide-in 0.6s ease-out;
+        }
+
+        @keyframes slide-in {
+            from{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .container a:hover {
+            background-color: lightblue;
+        }
+        footer {
+            background-color: #333;
+            overflow: hidden;
+            float: bottom;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input {
+            margin-right: 5px;
+        }
+
+        input[type="button"],
+        input[type="submit"],
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .check {
+            text-align: left;
+        }
+        
+        .summa {
+            width: 100%;
+            height: 20px;
+        }
+        
+        .summa2 {
+            float: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="background">
+
+    <h1 MyHighlight="" class="media">Bloody Sweet Cafe</h1>
+    <h2 MyHighlight  style="color: #3c0ad3;;text-align: center;">{{mydate}}</h2>    
+    <div class="container">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" autocomplete="off">
+            <h1 align="center">Register Page</h1>
+            <label>Username:</label>
+            <input class="summa" type="text" minlength="8" maxlength="12" pattern="[0-9A-Za-z]+" ngModel #username="ngModel" name="username" required><br><br>
+            <div *ngIf="username.invalid && username.touched">
+                <span myreqstyle *ngIf="username.errors?.['required']">* Username is required</span>
+                <span myreqstyle *ngIf="username.errors?.['minlength']">min length is 8</span>
+                <span myreqstyle *ngIf="username.errors?.['maxlength']">max length is 12</span>
+                <span myreqstyle *ngIf="username.errors?.['pattern']">*password should have alphanumerics </span>
+            </div><br>
+            
+            <label>Phone Number:</label>
+            <input class="summa" type="text" maxlength="10" minlength="10" ngModel #phno="ngModel" name="phno" required><br><br>
+            <div *ngIf="phno.invalid && phno.touched">
+                <span myreqstyle *ngIf="phno.errors?.['required']">* Phone number is required</span>
+                <span myreqstyle *ngIf="phno.errors?.['minlength']">min length is 10</span>
+                <span myreqstyle *ngIf="phno.errors?.['maxlength']">max length is 10</span>    
+            </div><br>
+            
+            <label>Email:</label>
+            <input class="summa" type="email" [(ngModel)]="email1" #email="ngModel" name="email" required><br><br>
+            <div *ngIf="email.invalid && email.touched">
+                <span myreqstyle *ngIf="email.errors?.['required']">* Email is required</span>
+                <span myreqstyle *ngIf="email.errors?.['email']">* Valid email required</span>
+            </div><br>
+
+            <label>Password:</label>
+            <input class="summa" type="password"  minlength="7" maxlength="10" pattern="[0-9A-Za-z!@#$%^&*()_+=-]+" id="pwd" ngModel #pwd="ngModel" name="pwd" required><br><br>
+            <div *ngIf="pwd.invalid">
+                <span myreqstyle *ngIf="pwd.errors?.['required']">*required</span>
+                <span myreqstyle *ngIf="pwd.errors?.['minlength']">min length is 7</span>
+                <span myreqstyle *ngIf="pwd.errors?.['maxlength']">max length is 10</span>
+                <span myreqstyle *ngIf="pwd.errors?.['pattern']">*password should have alphanumerics and special characters</span>
+            </div>
+
+            <label>Gender:</label>
+            <input type="radio" id="gender" ngModel #gender="ngModel" name="gender" value="male" required>Male
+            <input type="radio" id="gender" ngModel #gender="ngModel" name="gender" value="female" required>Female<br><br>
+            <div *ngIf="gender.invalid && gender.touched">
+                <span myreqstyle *ngIf="gender.errors?.['required']">* gender required</span>
+            </div>
+            <label for="address">Address:</label>
+            <input style="width: 100%;height: 50px;" type="text" id="address" name="address" ngModel #address="ngModel" required><br><br>
+            <div *ngIf="address.invalid && address.touched">
+                <span myreqstyle *ngIf="address.errors?.['required']">*address required</span>
+            </div>
+
+            <input type="checkbox" id="terms" ngModel #terms="ngModel" name="terms" required>I accept the terms and conditions<br><br>
+            <label align="center"><button class="summa2" type="submit" style="display: inline-block; background-color: #4caf50; color: #fff; padding: 10px 50px; text-decoration: none; border-radius: 2px;">Submit</button></label>
+            <label align="center"><a href="/login">Already have an account? Login </a></label>
+            <label align="center"><a href="/delete-admin">Delete my account</a></label>
+        </form>
+    </div>
+    <h2 style="text-align: center;">{{msg}}</h2>
+</body>
+</html>

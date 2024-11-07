@@ -1,0 +1,161 @@
+<!--<p>update-cost works!</p>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bg.jpg'); /* Replace 'background_image.jpg' with your image file */
+            background-size: cover;
+        }
+        h1 {
+            display: block;
+            margin-bottom: 8px; 
+            text-align: center;
+        }
+
+        .media {
+            background-color: transparent;
+            overflow: hidden;
+            float: center;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 60px;
+            font-style: italic;
+            font-family: 'Times New Roman';
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            color: black;
+            border-radius: 5px;
+            background-color: rgba(240, 237, 233, 0.151);
+            animation: slide-in 0.6s ease-out;
+        }
+
+        @keyframes slide-in {
+            from{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .container a:hover {
+            background-color: lightblue;
+        }
+        footer {
+            background-color: #333;
+            overflow: hidden;
+            float: bottom;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input {
+            margin-right: 5px;
+        }
+
+        input[type="button"],
+        input[type="submit"],
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .check {
+            text-align: left;
+        }
+        
+        .summa {
+            width: 100%;
+            height: 20px;
+        }
+        
+        .summa2 {
+            float: center;
+            text-align: center;
+        }
+        .button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout-button {
+    background-color: #ff0000e6;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 2px;
+}
+
+    </style>
+        <script>
+          </script>
+</head>
+<body>
+    <h1 class="media">Bloody Sweet Cafe</h1>
+    <div class="container">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" autocomplete="off">
+            <h1 align="center">Update Amount</h1>
+            
+            <label>Food name:</label>
+            <input class="summa" type="text" id="food_name" minlength="4" maxlength="15" pattern="[a-zA-Z]+" ngModel #food_name="ngModel" placeholder="enter food name " name="food_name" required><br><br>
+            <div *ngIf="food_name.invalid && food_name.touched">
+                <span myreqstyle *ngIf="food_name.errors?.['required']">* food item name is required</span>
+                <span myreqstyle *ngIf="food_name.errors?.['minlength']">min length is 4</span>
+                <span myreqstyle *ngIf="food_name.errors?.['maxlength']">max length is 15</span>
+                <span myreqstyle *ngIf="food_name.errors?.['pattern']">*food name should have alhpabets only</span>
+            </div><br>
+            <label>Amount:</label>
+            <input class="summa" type="number" id="amount" ngModel #amount="ngModel" minlength="2" maxlength="3" pattern="[0-9]+" placeholder="enter amount to update" name="amount" required><br><br>
+            <div *ngIf="amount.invalid && amount.touched">
+                <span myreqstyle *ngIf="amount.errors?.['required']">* food item Amount is required</span>
+                <span myreqstyle *ngIf="amount.errors?.['minlength']">min length is 2</span>
+                <span myreqstyle *ngIf="amount.errors?.['maxlength']">max length is 3</span>
+                <span myreqstyle *ngIf="amount.errors?.['pattern']">*food amount should be number</span>
+            </div><br>
+            <div class="button-container">
+                <!--<a href='login' class="logout-button">log out</a>-->
+                <button (click)="logout()">logout</button>
+                <button class="summa2 submit-button" type="submit">Submit</button>
+            </div>
+            <label align="center"><a href="/add-food">Add food</a></label>
+            <label align="center"><a href="/delete-food">Delete food </a></label>
+            <label align="center"><a href="/make-order">Make orders</a></label>
+        </form>
+        
+    </div>
+    <h2 style="text-align: center;">{{msg}}</h2>
+</body>
+</html>

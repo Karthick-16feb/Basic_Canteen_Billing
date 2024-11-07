@@ -1,0 +1,204 @@
+<!--<p>forget works!</p>
+<!--<p>forget works!</p>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="input-group">
+        Email ID :<input type="email" ngModel #email="ngModel" email="email" /><br/>
+    </div>
+    <div class="input-group">
+        Password : <input type="password" ngModel #pwd="ngModel" name="pwd" /><br/>
+    </div>
+
+    <div class="input-group">
+        Confirm Password : <input type="password" ngModel #c_pwd="ngModel" name="c_pwd" /><br/>
+    </div>
+
+
+    <div class="input-group">
+        <input type="submit" name="submit" />
+    </div>
+
+    <div class="input-group">
+        <a href="/register">Go to register page</a><br>
+        <a href="/login">Go to login page</a>
+        
+    </div>
+    
+</form>
+<h2>{{msg}}</h2>
+<p></p>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Forget</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('bg.jpg'); /* Replace 'background_image.jpg' with your image file */
+            background-size: cover;
+        }
+        h1 {
+            display: block;
+            margin-bottom: 8px; 
+            text-align: center;
+        }
+
+        .media {
+            background-color: transparent;
+            overflow: hidden;
+            float: center;
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 60px;
+            font-style: italic;
+            font-family: 'Times New Roman';
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            border: 1px solid #ccc;
+            color: black;
+            border-radius: 5px;
+            background-color: rgba(240, 237, 233, 0.151);
+            animation: slide-in 0.6s ease-out;
+        }
+
+        @keyframes slide-in {
+            from{
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .container a:hover {
+            background-color: lightblue;
+        }
+        footer {
+            background-color: #333;
+            overflow: hidden;
+            float: bottom;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        input {
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 16px;
+                    box-sizing: border-box;
+                }
+
+                input[type="button"] {
+                    background-color: #4caf50;
+                    color: white;
+                    cursor: pointer;
+                }       
+                input[type="submit"] {
+                    background-color: #4caf50;
+                    color: white;
+                    cursor: pointer;
+                }
+        
+        .check {
+            text-align: left;
+        }
+        
+        .summa {
+            width: 100%;
+            height: 20px;
+        }
+        
+        .summa2 {
+            float: center;
+            text-align: center;
+        }
+    </style>
+        <script>/*
+            function validate() {
+              var email = document.f1.email.value.trim();
+              if (email.length == 0) {
+                alert("Email ID is Missing");
+                return false;
+              }
+              var pass = document.f1.password.value.trim();
+              var cpass = document.f1.cpassword.value.trim();
+              if (pass.length > 7 || cpass.length > 7) {
+                alert("the password contains atleast eight characters");
+                return false;
+            }
+              if (pass.length == 0) {
+                alert("Password is Missing");
+                return false;
+              }
+              if (cpass.length == 0) {
+                alert("Confirm your password");
+                return false;
+              }
+              return true;
+            }
+        */
+            
+           
+
+    
+    
+          </script>
+</head>
+<body>
+
+    <h1  MyHighlight="" class="media">Bloody Sweet Cafe</h1>
+    <h2 MyHighlight  style="color:rgb(219, 11, 167);text-align: center;">{{mydate}}</h2>
+    <div class="container">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" autocomplete="off">
+            
+            <h1 align="center">Update user password</h1>
+            
+            <label>Email:</label>
+            <input class="summa" type="email" ngModel #email="ngModel" id="email" name="email"  ><br><br>
+            <div *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.['required']">* Required</span>
+                <span *ngIf="email.errors?.['email']">* Valid email required</span>
+            </div>
+            <label>Password:</label>
+            <input class="summa" type="password" minlength="7" maxlength="10" pattern="[0-9A-Za-z!@#$%^&*()_+=-]+" ngModel #pwd="ngModel" id="pwd" name="pwd" ><br><br>
+            <div *ngIf="pwd.invalid">
+                <span *ngIf="pwd.errors?.['required']">*required</span>
+                <span *ngIf="pwd.errors?.['minlength']">min length is 7</span>
+                <span *ngIf="pwd.errors?.['maxlength']">max length is 10</span>
+                <span *ngIf="pwd.errors?.['pattern']">*password should have alphanumerics and special characters</span>
+            </div>
+
+            <input type="submit" name="Update" value="Update"/>
+            <label align="center"><a href="/login">Go to login page</a></label>
+        </form>
+    </div>
+    <div id="alertContainer"></div>
+</body>
+</html>
+
+
+
+
+
