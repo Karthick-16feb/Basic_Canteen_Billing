@@ -1,4 +1,4 @@
-# KIOSK-like CANTEEN BILL GENERATOR (:only bill generated yet to integrate payment modeules for the system
+# KIOSK-like CANTEEN BILL GENERATOR (:only bill generation module done yet to integrate payment modeules for the system)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
 
